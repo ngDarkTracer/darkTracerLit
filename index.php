@@ -1,0 +1,1 @@
+<?php inclide("index.html"); ?>
