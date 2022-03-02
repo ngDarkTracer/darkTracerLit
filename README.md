@@ -1,48 +1,26 @@
-# \<simple-greeting>
+# DarkTracerLitComponent 😈
 
 This webcomponent follows the [open-wc](https://github.com/open-wc/open-wc) recommendation.
 
 ## Installation
 
-```bash
-npm i simple-greeting
-```
-
-## Usage
-
-```html
-<script type="module">
-  import 'simple-greeting/simple-greeting.js';
-</script>
-
-<simple-greeting></simple-greeting>
-```
-
-## Linting and formatting
-
-To scan the project for linting and formatting errors, run
+install all modules
 
 ```bash
-npm run lint
+npm i
 ```
 
-To automatically fix linting and formatting errors, run
+## Launch
+
+To compile and launch the project
 
 ```bash
-npm run format
+npm run start
 ```
 
+## Build
 
-## Tooling configs
-
-For most of the tools, the configuration is in the `package.json` to reduce the amount of files in your project.
-
-If you customize the configuration a lot, you can consider moving them to individual files.
-
-## Local Demo with `web-dev-server`
+To build for production
 
 ```bash
-npm start
-```
-
-To run a local development server that serves the basic demo located in `demo/index.html`
+npm run build
