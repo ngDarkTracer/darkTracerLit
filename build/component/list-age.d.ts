@@ -1,8 +1,10 @@
 import { LitElement } from 'lit';
 export declare class ListAge extends LitElement {
-    ageItems: string[];
+    ageItems: any[];
+    age: number;
+    static styles: import("lit").CSSResult;
+    constructor();
     render(): import("lit-html").TemplateResult<1>;
-    updateName(e: CustomEvent): void;
 }
 declare global {
     interface HTMLElementTagNameMap {

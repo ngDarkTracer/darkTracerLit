@@ -1,31 +1,53 @@
  import {LitElement, html, css} from 'lit';
  import {customElement, property} from 'lit/decorators.js';
- 
- 
+
+
  @customElement('my-comp')
  export class MyComp extends LitElement {
-   static override styles = css`
-     :host {
-       display: block;
-       border: solid 1px gray;
-       padding: 16px;
-       max-width: 800px;
-     }
-   `;
- 
-   
+
+   static styles = css `
+
+      div {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: no-wrap;
+      }
+
+      input[type=text] {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-outline: none;
+      box-sizing: border-box;
+    }
+
+      button {
+      width: 40%;
+      background-color: #4CAF50;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+    }
+  `;
+
+
    @property({type: String})
    name='';
- 
-   
+
+
    @property({type: String})
    age='';
- 
+
    override render() {
      return html`
-       <input type="text" name="input-text" @input=${this.updateName} placeholder="enter some text here..."></input>
-       <button @click=${this.search}>Search</button>
-       <label>${this.age}</label>
+       <div>
+         <input type="text" name="input-text" @input=${this.updateName} placeholder="Enter a name..."></input>
+         <button @click=${this.search}>Search</button>
+       </div>
      `;
    }
 
@@ -42,18 +64,18 @@
     .then((result) => {
       this.age = result.age as string;
       this.dispatchEvent(new CustomEvent('myage', {
-        detail: {ages: result.age},
+        detail: {name: this.name, age: result.age},
         bubbles: true,
         composed: true
       }))
     });
    }
  }
- 
+
  declare global {
    interface HTMLElementTagNameMap {
      'my-comp': MyComp;
    }
  }
- 
+
 

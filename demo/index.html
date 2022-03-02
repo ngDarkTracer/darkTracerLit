@@ -2,12 +2,21 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <script type="module" src="../dist/src/my-comp.js"></script>
-  <script type="module" src="../dist/src/list-age.js"></script>
+  <script type="module" src="../build/component/my-comp.js"></script>
+  <script type="module" src="../build/component/list-age.js"></script>
+  <link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
-<list-age>
-  <my-comp></my-comp>
-</list-age>
+<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)" id="main">
+  <my-comp id="cmp1"></my-comp>
+  <list-age id="cmp2"></list-age>
+</div>
+<!--<div id="cmp" style="width: 10px; height: 10px; border: 1px solid chartreuse"></div>-->
+<script>
+  document.getElementById('cmp1').addEventListener('myage', (event) => {
+    console.log('From cmp1...', event.detail);
+    document.getElementById('cmp2').age = event.detail;
+  }, false);
+</script>
 </body>
 </html>

@@ -9,9 +9,10 @@ let MyComp = class MyComp extends LitElement {
     }
     render() {
         return html `
-       <input type="text" name="input-text" @input=${this.updateName} placeholder="enter some text here..."></input>
-       <button @click=${this.search}>Search</button>
-       <label>${this.age}</label>
+       <div>
+         <input type="text" name="input-text" @input=${this.updateName} placeholder="Enter a name..."></input>
+         <button @click=${this.search}>Search</button>
+       </div>
      `;
     }
     updateName(e) {
@@ -26,7 +27,7 @@ let MyComp = class MyComp extends LitElement {
             .then((result) => {
             this.age = result.age;
             this.dispatchEvent(new CustomEvent('myage', {
-                detail: { ages: result.age },
+                detail: { name: this.name, age: result.age },
                 bubbles: true,
                 composed: true
             }));
@@ -34,13 +35,33 @@ let MyComp = class MyComp extends LitElement {
     }
 };
 MyComp.styles = css `
-     :host {
-       display: block;
-       border: solid 1px gray;
-       padding: 16px;
-       max-width: 800px;
-     }
-   `;
+
+      div {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: no-wrap;
+      }
+
+      input[type=text] {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-outline: none;
+      box-sizing: border-box;
+    }
+
+      button {
+      width: 40%;
+      background-color: #4CAF50;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+    }
+  `;
 __decorate([
     property({ type: String })
 ], MyComp.prototype, "name", void 0);
